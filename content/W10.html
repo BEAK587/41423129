@@ -144,7 +144,86 @@ img.add_border {
         </header>
     <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>W10</h1>
 <p><strong>報告題目：如何在瀏覽器中模擬機器人作動？</strong></p>
-<p><strong>機器人控制程式概念</strong></p><br />w7 << <a href='w7.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+<p><strong>機器人控制程式概念</strong></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">機器人控制程式碼範例
+# 記錄機器人當前狀態
+position = (0, 0)
+direction = "right"
+carrots_collected = 0
+
+def 移動():
+    # 根據方向更新位置
+    global position
+    x, y = position
+    
+    if direction == "right":
+        x += 1
+    elif direction == "left":
+        x -= 1
+    elif direction == "up":
+        y += 1
+    elif direction == "down":
+        y -= 1
+    
+    position = (x, y)
+    print(f"移動到位置: {position}")
+
+def 轉彎():
+    # 改變方向
+    global direction
+    
+    if direction == "right":
+        direction = "down"
+    elif direction == "down":
+        direction = "left"
+    elif direction == "left":
+        direction = "up"
+    elif direction == "up":
+        direction = "right"
+    
+    print(f"轉向: {direction}")
+
+def 採收():
+    # 增加胡蘿蔔數量
+    global carrots_collected
+    carrots_collected += 1
+    print(f"採收到胡蘿蔔! 總計: {carrots_collected}")
+
+def 前方有胡蘿蔔():
+    # 檢查前方是否有胡蘿蔔（模擬函數）
+    return True  # 實際應用中這裡會有判斷邏輯
+
+# 重複執行直到完成
+還有胡蘿蔔 = True
+步數限制 = 20
+當前步數 = 0
+
+while 還有胡蘿蔔 and 當前步數 &lt; 步數限制:
+    
+    # 檢查前方是否有胡蘿蔔
+    if 前方有胡蘿蔔():
+        採收()
+    
+    # 移動到下一個位置
+    移動()
+    
+    # 每4步轉彎一次（模擬巡邏模式）
+    if 當前步數 % 4 == 0:
+        轉彎()
+    
+    當前步數 += 1
+    
+    # 更新狀態（模擬條件）
+    if carrots_collected &gt;= 5:
+        還有胡蘿蔔 = False
+        print("任務完成! 已收集足夠的胡蘿蔔。")
+    
+    if 當前步數 &gt;= 步數限制:
+        print("達到步數限制，停止執行。")
+        break
+
+print(f"最終結果 - 位置: {position}, 方向: {direction}, 胡蘿蔔: {carrots_collected}")</pre>
+<p></p><br />w7 << <a href='w7.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
